@@ -5290,6 +5290,3 @@ body {
 #chat_container dl.a-left dt {
   text-align: left;
 }
-#chat_container dl.a-left dt.self {
-  color: green;
-}
