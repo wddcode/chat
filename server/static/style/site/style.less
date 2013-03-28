@@ -1,8 +1,13 @@
 #chat_container {
-  dl.a-left {
-    dt {
+  dl {
+    dt, dd {
       text-align: left;
-
+      &.own {
+        color: #ff00ff;
+      }
+      &.server {
+        color: #bababa;
+      }
     }
   }
 }

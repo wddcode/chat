@@ -2,6 +2,7 @@ var http = require('http');
 var express = require("express");
 var app = express();
 var server = http.createServer(app)
+
 var io = require('socket.io').listen(server);
 
 
@@ -46,12 +47,13 @@ io.sockets.on('connection', function (socket) {
 		io.sockets.emit('updatechat', socket.username, data);
 	});
 	
-	
+	/* */
 	socket.on('disconnect', function(){
 		delete usernames[socket.username];
 		io.sockets.emit('updateusers', usernames);
 		socket.broadcast.emit('updatechat', 'SERVER', socket.username + ' has disconnected');
 	});
+	
 	
 	
 });

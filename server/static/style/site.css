@@ -5287,6 +5287,15 @@ body {
     padding-right: 20px;
   }
 }
-#chat_container dl.a-left dt {
+#chat_container dl dt,
+#chat_container dl dd {
   text-align: left;
+}
+#chat_container dl dt.own,
+#chat_container dl dd.own {
+  color: #ff00ff;
+}
+#chat_container dl dt.server,
+#chat_container dl dd.server {
+  color: #bababa;
 }

@@ -1,10 +1,14 @@
 var socket = io.connect('http://localhost:8081');
 
+var currentUsername;
+
 socket.on('connect', function() {
 
 	console.log('socket ready');
 	
-	socket.emit('adduser', prompt('username:'));
+	currentUsername = prompt('username:')
+	
+	socket.emit('adduser', currentUsername);
 	
 	
 })
@@ -24,7 +28,15 @@ socket.on('updateusers', function(data) {
 
 socket.on('updatechat', function(username, data) {
 
-	var html = '<dt>' + username + '</dt><dd>' + data + '</dd>';
+	if(currentUsername == username) {
+		var html = '<dt class="own">' + username + '</dt><dd class="own">' + data + '</dd>';
+	} else if('SERVER' == username) {
+		var html = '<dt class="server">' + username + '</dt><dd class="server">' + data + '</dd>';
+	} else {
+		var html = '<dt>' + username + '</dt><dd>' + data + '</dd>';
+	}
+
+	
 	
 	$('#conversation').prepend(html);
 
